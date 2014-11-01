@@ -1,0 +1,24 @@
+{
+    "name": "swarrot/demo-worker",
+    "description": "A worker to show how swarrot works",
+    "keywords": ["swarrot","worker"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Olivier Dolbeau",
+            "homepage": "http://odolbeau.fr/"
+        }
+    ],
+    "require": {
+        "swarrot/swarrot": "~1.4",
+        "symfony/console": "~2.5",
+        "symfony/event-dispatcher": "~2.5",
+        "symfony/monolog-bridge": "~2.5"
+    },
+    "autoload": {
+        "psr-0": {
+            "Swarrot": "src"
+        }
+    }
+}

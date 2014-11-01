@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+if (!$loader = include __DIR__.'/vendor/autoload.php') {
+    die('You must set up the project dependencies.');
+}
+
+use Symfony\Component\Console\Application;
+use Monolog\Logger;
+use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+
+$consoleHandler = new ConsoleHandler();
+
+$logger = new Logger('worker.mail');
+$logger->pushHandler($consoleHandler);
+
+$eventDispatcher = new EventDispatcher();
+$eventDispatcher->addSubscriber($consoleHandler);
+
+$app = new Application('Swarrot DemoWorker');
+$app->setDispatcher($eventDispatcher);
+
+$app->add(new Swarrot\Console\Command\ConsumeCommand($logger));
+$app->run();
