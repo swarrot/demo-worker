@@ -14,7 +14,8 @@
         "swarrot/swarrot": "~1.4",
         "symfony/console": "~2.5",
         "symfony/event-dispatcher": "~2.5",
-        "symfony/monolog-bridge": "~2.5"
+        "symfony/monolog-bridge": "~2.5",
+        "videlalvaro/php-amqplib": "~2.4"
     },
     "autoload": {
         "psr-0": {

@@ -11,8 +11,10 @@ use Symfony\Component\Console\Command\Command;
 use Swarrot\Broker\MessageProviderInterface;
 use Swarrot\Processor\DumbProcessor;
 use Swarrot\Broker\MessageProvider\PeclPackageMessageProvider;
+use Swarrot\Broker\MessageProvider\PhpAmqpLibMessageProvider;
 use Swarrot\Processor\Stack;
 use Psr\Log\LoggerInterface;
+use PhpAmqpLib\Connection\AMQPConnection;
 
 class ConsumeCommand extends Command
 {
@@ -34,6 +36,11 @@ class ConsumeCommand extends Command
             ->addArgument('vhost', InputArgument::OPTIONAL, 'In which vhost is the queue?', '/')
             ->addOption('fail', '', InputOption::VALUE_NONE, 'If activated, an exception will be thrown in the processor')
             ->addOption('max_messages', 'm', InputOption::VALUE_REQUIRED, 'Max messages to process.', 100)
+            ->addOption('provider', 'p', InputOption::VALUE_REQUIRED, 'Which provider to use? [ext|lib]', 'ext')
+            ->addOption('host', 'H', InputOption::VALUE_REQUIRED, 'RabbitMQ host', '127.0.0.1')
+            ->addOption('port', null, InputOption::VALUE_REQUIRED, 'RabbitMQ port', 5672)
+            ->addOption('user', 'u', InputOption::VALUE_REQUIRED, 'RabbitMQ user', 'guest')
+            ->addOption('password', '', InputOption::VALUE_REQUIRED, 'RabbitMQ password', 'guest')
         ;
     }
 
@@ -42,16 +49,29 @@ class ConsumeCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        // We create a connection to an AMQP broker and retrieve the queue "mail"
-        $connection = new \AMQPConnection([
-            'vhost' => $input->getArgument('vhost')
-        ]);
-        $connection->connect();
-        $channel = new \AMQPChannel($connection);
-        $queue = new \AMQPQueue($channel);
-        $queue->setName($input->getArgument('queue'));
+        if ('ext' === $input->getOption('provider')) {
+            $connection = new \AMQPConnection([
+                'vhost' => $input->getArgument('vhost')
+            ]);
+            $connection->connect();
+            $channel = new \AMQPChannel($connection);
+            $queue = new \AMQPQueue($channel);
+            $queue->setName($input->getArgument('queue'));
 
-        $messageProvider = new PeclPackageMessageProvider($queue);
+            $messageProvider = new PeclPackageMessageProvider($queue);
+        } elseif ('lib' === $input->getOption('provider')) {
+            $connection = new AMQPConnection(
+                $input->getOption('host'),
+                $input->getOption('port'),
+                $input->getOption('user'),
+                $input->getOption('password'),
+                $input->getArgument('vhost')
+            );
+            $messageProvider = new PhpAmqpLibMessageProvider(
+                $connection->channel(),
+                $input->getArgument('queue')
+            );
+        }
 
         // We create a basic processor which use \SwiftMailer to send mails
         $processor = new DumbProcessor(
