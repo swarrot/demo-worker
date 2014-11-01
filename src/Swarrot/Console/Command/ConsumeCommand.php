@@ -33,6 +33,7 @@ class ConsumeCommand extends Command
             ->addArgument('queue', InputArgument::REQUIRED, 'The queue to consume')
             ->addArgument('vhost', InputArgument::OPTIONAL, 'In which vhost is the queue?', '/')
             ->addOption('fail', '', InputOption::VALUE_NONE, 'If activated, an exception will be thrown in the processor')
+            ->addOption('max_messages', 'm', InputOption::VALUE_REQUIRED, 'Max messages to process.', 100)
         ;
     }
 
@@ -59,8 +60,8 @@ class ConsumeCommand extends Command
         );
         $stack = (new Stack\Builder())
             ->push('Swarrot\Processor\SignalHandler\SignalHandlerProcessor', $this->logger)
-            ->push('Swarrot\Processor\ExceptionCatcher\ExceptionCatcherProcessor', $this->logger)
             ->push('Swarrot\Processor\MaxMessages\MaxMessagesProcessor', $this->logger)
+            ->push('Swarrot\Processor\ExceptionCatcher\ExceptionCatcherProcessor', $this->logger)
             ->push('Swarrot\Processor\MaxExecutionTime\MaxExecutionTimeProcessor', $this->logger)
             ->push('Swarrot\Processor\Ack\AckProcessor', $messageProvider, $this->logger)
             ->push('Swarrot\Processor\InstantRetry\InstantRetryProcessor', $this->logger)
@@ -74,6 +75,8 @@ class ConsumeCommand extends Command
             $this->logger
         );
 
-        return $consumer->consume(array());
+        return $consumer->consume([
+            'max_messages' => (int) $input->getOption('max_messages')
+        ]);
     }
 }
