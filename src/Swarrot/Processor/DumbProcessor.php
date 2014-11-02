@@ -3,7 +3,6 @@
 namespace Swarrot\Processor;
 
 use Swarrot\Broker\Message;
-use Swarrot\Processor\ProcessorInterface;
 use Psr\Log\LoggerInterface;
 
 class DumbProcessor implements ProcessorInterface

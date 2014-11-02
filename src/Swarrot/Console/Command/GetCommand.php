@@ -8,7 +8,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Swarrot\Consumer;
 use Symfony\Component\Console\Command\Command;
-use Swarrot\Broker\MessageProviderInterface;
 use Swarrot\Processor\DumbProcessor;
 use Swarrot\Broker\MessageProvider\PeclPackageMessageProvider;
 use Swarrot\Broker\MessageProvider\PhpAmqpLibMessageProvider;
