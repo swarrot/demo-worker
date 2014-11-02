@@ -21,5 +21,5 @@ $eventDispatcher->addSubscriber($consoleHandler);
 $app = new Application('Swarrot DemoWorker');
 $app->setDispatcher($eventDispatcher);
 
-$app->add(new Swarrot\Console\Command\ConsumeCommand($logger));
+$app->add(new Swarrot\Console\Command\GetCommand($logger));
 $app->run();

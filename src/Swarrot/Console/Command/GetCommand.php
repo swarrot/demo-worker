@@ -16,7 +16,7 @@ use Swarrot\Processor\Stack;
 use Psr\Log\LoggerInterface;
 use PhpAmqpLib\Connection\AMQPConnection;
 
-class ConsumeCommand extends Command
+class GetCommand extends Command
 {
     protected $logger;
 
@@ -30,8 +30,8 @@ class ConsumeCommand extends Command
     public function configure()
     {
         $this
-            ->setName('consume')
-            ->setDescription('Consume a queue.')
+            ->setName('get')
+            ->setDescription('Get messages from a queue.')
             ->addArgument('queue', InputArgument::REQUIRED, 'The queue to consume')
             ->addArgument('vhost', InputArgument::OPTIONAL, 'In which vhost is the queue?', '/')
             ->addOption('fail', '', InputOption::VALUE_NONE, 'If activated, an exception will be thrown in the processor')
