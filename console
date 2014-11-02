@@ -22,4 +22,5 @@ $app = new Application('Swarrot DemoWorker');
 $app->setDispatcher($eventDispatcher);
 
 $app->add(new Swarrot\Console\Command\GetCommand($logger));
+$app->add(new Swarrot\Console\Command\PublishCommand($logger));
 $app->run();
