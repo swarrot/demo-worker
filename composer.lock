@@ -118,16 +118,16 @@
         },
         {
             "name": "swarrot/swarrot",
-            "version": "v1.4.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swarrot/swarrot.git",
-                "reference": "eddf811bf0efc2ee2e894f84be44e477e8f7a17d"
+                "reference": "ddaff2329571b3a8ce936aae8b66a10c8b9e0e31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swarrot/swarrot/zipball/eddf811bf0efc2ee2e894f84be44e477e8f7a17d",
-                "reference": "eddf811bf0efc2ee2e894f84be44e477e8f7a17d",
+                "url": "https://api.github.com/repos/swarrot/swarrot/zipball/ddaff2329571b3a8ce936aae8b66a10c8b9e0e31",
+                "reference": "ddaff2329571b3a8ce936aae8b66a10c8b9e0e31",
                 "shasum": ""
             },
             "require": {
@@ -136,6 +136,8 @@
                 "symfony/options-resolver": "~2.3"
             },
             "require-dev": {
+                "doctrine/common": "~2.3",
+                "doctrine/dbal": "~2.0",
                 "phpspec/prophecy-phpunit": "~1.0",
                 "phpunit/phpunit": "~4.0",
                 "videlalvaro/php-amqplib": "~2.0"
@@ -171,21 +173,21 @@
                 "swarrot",
                 "worker"
             ],
-            "time": "2014-10-25 11:07:27"
+            "time": "2014-11-27 10:53:21"
         },
         {
             "name": "symfony/console",
-            "version": "v2.5.6",
+            "version": "v2.5.7",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "6f177fca24200a5b97aef5ce7a5c98124a0f0db0"
+                "reference": "61b13c27c9258e97009249d4ef193c964bf346b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/6f177fca24200a5b97aef5ce7a5c98124a0f0db0",
-                "reference": "6f177fca24200a5b97aef5ce7a5c98124a0f0db0",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/61b13c27c9258e97009249d4ef193c964bf346b7",
+                "reference": "61b13c27c9258e97009249d4ef193c964bf346b7",
                 "shasum": ""
             },
             "require": {
@@ -226,21 +228,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-10-05 13:57:04"
+            "time": "2014-11-20 13:22:25"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.5.6",
+            "version": "v2.5.7",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "804eb28dbbfba9ffdab21fe2066744906cea2212"
+                "reference": "bb6fc12085cd195dceaf48016087b12b632df497"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/804eb28dbbfba9ffdab21fe2066744906cea2212",
-                "reference": "804eb28dbbfba9ffdab21fe2066744906cea2212",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/bb6fc12085cd195dceaf48016087b12b632df497",
+                "reference": "bb6fc12085cd195dceaf48016087b12b632df497",
                 "shasum": ""
             },
             "require": {
@@ -283,21 +285,21 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-10-01 15:43:05"
+            "time": "2014-10-30 20:17:55"
         },
         {
             "name": "symfony/monolog-bridge",
-            "version": "v2.5.6",
+            "version": "v2.5.7",
             "target-dir": "Symfony/Bridge/Monolog",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBridge.git",
-                "reference": "8b347d88fa2bf0b56c36ac82f5cfc8054a66f3d8"
+                "reference": "2936b1286047d6e7c847a7b4ac48d847455dced4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBridge/zipball/8b347d88fa2bf0b56c36ac82f5cfc8054a66f3d8",
-                "reference": "8b347d88fa2bf0b56c36ac82f5cfc8054a66f3d8",
+                "url": "https://api.github.com/repos/symfony/MonologBridge/zipball/2936b1286047d6e7c847a7b4ac48d847455dced4",
+                "reference": "2936b1286047d6e7c847a7b4ac48d847455dced4",
                 "shasum": ""
             },
             "require": {
@@ -341,11 +343,11 @@
             ],
             "description": "Symfony Monolog Bridge",
             "homepage": "http://symfony.com",
-            "time": "2014-09-22 09:14:18"
+            "time": "2014-10-30 20:17:55"
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v2.5.6",
+            "version": "v2.5.7",
             "target-dir": "Symfony/Component/OptionsResolver",
             "source": {
                 "type": "git",
